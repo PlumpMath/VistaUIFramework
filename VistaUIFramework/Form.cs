@@ -1,10 +1,12 @@
 ﻿using System;
 using System.ComponentModel;
+using System.Windows.Forms;
 
 namespace MyAPKapp.VistaUIFramework {
     public class Form : System.Windows.Forms.Form {
         private bool _CloseBox = true;
         private bool _Aero;
+        private Padding _AeroMargin;
 
         public Form() : base() {}
 
@@ -24,9 +26,12 @@ namespace MyAPKapp.VistaUIFramework {
             }
         }
 
+        /// <summary>
+        /// Set the aero glass to the form
+        /// </summary>
         [Category("WindowStyle")]
         [DefaultValue(false)]
-        [Description("Set if close button is enabled")]
+        [Description("Set the aero glass to the form")]
         public bool Aero {
             get {
                 return _Aero;
@@ -37,13 +42,21 @@ namespace MyAPKapp.VistaUIFramework {
             }
         }
 
+        [Category("Design")]
+        [Description("The margins between form container and Aero glass")]
+        public Padding AeroMargin {
+            get {
+                return _AeroMargin;
+            }
+        }
+
         protected override void OnLoad(EventArgs e) {
             base.OnLoad(e);
             if (Aero && NativeMethods.DwmIsCompositionEnabled()) {
                 NativeMethods.MARGINS margins = new NativeMethods.MARGINS();
                 margins.topHeight = 20;
                 margins.leftWidth = 20;
-                NativeMethods.DwmExtendFrameIntoClientArea(this.Handle, ref margins);
+                NativeMethods.DwmExtendFrameIntoClientArea(Handle, ref margins);
             }
         }
 

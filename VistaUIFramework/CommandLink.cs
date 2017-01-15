@@ -1,10 +1,15 @@
 ﻿using System;
 using System.ComponentModel;
+using System.Drawing;
 using System.Text;
 using System.Windows.Forms;
+using System.ComponentModel.Design;
 
 namespace MyAPKapp.VistaUIFramework {
+    [ToolboxBitmap(typeof(System.Windows.Forms.Button))]
     public class CommandLink : Button {
+
+        private string _Note;
 
         /// <summary>
         /// CommandLink is a button with green arrow and a description (<code>Note</code> property)
@@ -17,19 +22,14 @@ namespace MyAPKapp.VistaUIFramework {
         [Category("Appearance")]
         [DefaultValue(null)]
         [Description("The CommandLink summary")]
-        [Editor("System.ComponentModel.Design.MultilineStringEditor, System.Design", "System.Drawing.Design.UITypeEditor")]
+        [Editor(typeof(MultilineStringEditor), typeof(System.Drawing.Design.UITypeEditor))]
         public string Note {
             get {
-                StringBuilder title = new StringBuilder();
-                int size = NativeMethods.SendMessage(Handle, NativeMethods.BCM_GETNOTELENGTH, 0, 0).ToInt32();
-                if (size > 0) {
-                    title = new StringBuilder(size + 1);
-                    NativeMethods.SendMessage(Handle, NativeMethods.BCM_GETNOTE, new IntPtr(title.Capacity), title);
-                }
-                return title.ToString();
+                return _Note;
             }
             set {
-                NativeMethods.SendMessage(Handle, NativeMethods.BCM_SETNOTE, IntPtr.Zero, value);
+                _Note = value;
+                NativeMethods.SendMessageW(Handle, NativeMethods.BCM_SETNOTE, IntPtr.Zero, value);
             }
         }
 
@@ -41,6 +41,12 @@ namespace MyAPKapp.VistaUIFramework {
                     cp.Style |= NativeMethods.BS_DEFCOMMANDLINK;
                 }
                 return cp;
+            }
+        }
+
+        protected override Size DefaultSize {
+            get {
+                return new Size(200, 74);
             }
         }
 
