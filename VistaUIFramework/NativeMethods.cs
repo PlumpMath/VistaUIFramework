@@ -55,6 +55,19 @@ namespace MyAPKapp.VistaUIFramework {
         public const int PBST_ERROR = 0x0002;
         public const int PBST_PAUSED = 0x0003;
 
+        /* LISTVIEW VARIABLES */
+        public const int LVM_FIRST = 0x1000;
+        public const int LVM_SETEXTENDEDLISTVIEWSTYLE = LVM_FIRST + 54;
+        public const int LVS_EX_DOUBLEBUFFER = 0x00010000;
+
+        /* TREEVIEW VARIABLES */
+        public const int TV_FIRST = 0x1100;
+        public const int TVM_GETEXTENDEDSTYLE = TV_FIRST + 45;
+        public const int TVM_SETEXTENDEDSTYLE = TV_FIRST + 44;
+        public const int TVS_EX_AUTOHSCROLL = 0x0020;
+        public const int TVS_EX_FADEINOUTEXPANDOS = 0x0040;
+        public const int TVS_EX_DOUBLEBUFFER = 0x0004;
+
         [StructLayout(LayoutKind.Sequential)]
         public struct MARGINS {
             public int leftWidth;
@@ -86,5 +99,17 @@ namespace MyAPKapp.VistaUIFramework {
 
         [DllImport("dwmapi.dll", PreserveSig = false)]
         public static extern bool DwmIsCompositionEnabled();
+
+        [DllImport("uxtheme.dll", ExactSpelling = true, CharSet = CharSet.Unicode)]
+        public static extern int SetWindowTheme(IntPtr hWnd, string pszSubAppName, string pszSubIdList);
+
+        [DllImport("uxtheme.dll", ExactSpelling = true, CharSet = CharSet.Unicode)]
+        public static extern int SetWindowTheme(IntPtr hWnd, int pszSubAppName, string pszSubIdList);
+
+        [DllImport("uxtheme.dll", ExactSpelling = true, CharSet = CharSet.Unicode)]
+        public static extern int SetWindowTheme(IntPtr hWnd, string pszSubAppName, int pszSubIdList);
+
+        [DllImport("uxtheme.dll", ExactSpelling = true, CharSet = CharSet.Unicode)]
+        public static extern int SetWindowTheme(IntPtr hWnd, int pszSubAppName, int pszSubIdList);
     }
 }

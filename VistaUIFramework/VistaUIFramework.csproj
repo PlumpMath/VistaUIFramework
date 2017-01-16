@@ -56,6 +56,9 @@
     <Compile Include="IPv4Box.cs">
       <SubType>Component</SubType>
     </Compile>
+    <Compile Include="ListView.cs">
+      <SubType>Component</SubType>
+    </Compile>
     <Compile Include="NativeMethods.cs" />
     <Compile Include="ProgressBar.cs">
       <SubType>Component</SubType>
@@ -71,6 +74,9 @@
     <Compile Include="SplitClickEventArgs.cs" />
     <Compile Include="SplitClickEventHandler.cs" />
     <Compile Include="TextBox.cs">
+      <SubType>Component</SubType>
+    </Compile>
+    <Compile Include="TreeView.cs">
       <SubType>Component</SubType>
     </Compile>
   </ItemGroup>

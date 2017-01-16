@@ -43,19 +43,26 @@ namespace MyAPKapp.VistaUIFramework {
         }
 
         [Category("Design")]
+        [DefaultValue(0)]
         [Description("The margins between form container and Aero glass")]
         public Padding AeroMargin {
             get {
                 return _AeroMargin;
             }
+            set {
+                _AeroMargin = value;
+                RecreateHandle();
+            }
         }
 
         protected override void OnLoad(EventArgs e) {
             base.OnLoad(e);
-            if (Aero && NativeMethods.DwmIsCompositionEnabled()) {
+            if (Aero && NativeMethods.DwmIsCompositionEnabled() && !DesignMode) {
                 NativeMethods.MARGINS margins = new NativeMethods.MARGINS();
-                margins.topHeight = 20;
-                margins.leftWidth = 20;
+                margins.topHeight = _AeroMargin.Top;
+                margins.bottomHeight = _AeroMargin.Bottom;
+                margins.leftWidth = _AeroMargin.Left;
+                margins.rightWidth = _AeroMargin.Right;
                 NativeMethods.DwmExtendFrameIntoClientArea(Handle, ref margins);
             }
         }
