@@ -11,10 +11,29 @@ namespace MyAPKapp.VistaUIFramework {
         public const int MF_GRAYED = 0x0001;
         public const int IMAGE_BITMAP = 0;
         public const int IMAGE_ICON = 1;
+        public const string WC_IPADDRESS = "SysIPAddress32";
 
-        /* WM VARIABLES */
+        /* WM AND WS VARIABLES */
         public const int WM_USER = 0x0400;
         public const int WM_PAINT = 0x000F;
+        public const int WS_VISIBLE = 0x10000000;
+        public const int WS_CHILD = 0x40000000;
+        public const int WS_EX_CLIENTEDGE = 0x00000200;
+        public const int WS_EX_NOPARENTNOTIFY = 0x00000004;
+        public const int WS_EX_LAYOUTRTL = 0x00400000;
+        public const int WS_EX_RIGHT = 0x00001000;
+        public const int WS_EX_RTLREADING = 0x00002000;
+        public const int WS_EX_LEFTSCROLLBAR = 0x00004000;
+
+        /* EDIT VARIABLES */
+        public const int ECM_FIRST = 0x1500;
+        public const int EM_SETCUEBANNER = ECM_FIRST + 1;
+
+        /* CLASS VARIABLES */
+        public const int CS_VREDRAW = 0x0001;
+        public const int CS_HREDRAW = 0x0002;
+        public const int CS_DBLCLKS = 0x0008;
+        public const int CS_GLOBALCLASS = 0x4000;
 
         /* BUTTON VARIABLES */
         public const int BCM_FIRST = 0x1600;

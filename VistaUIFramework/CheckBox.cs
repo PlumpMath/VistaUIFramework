@@ -5,14 +5,14 @@ using System.Drawing;
 using System.Windows.Forms;
 
 namespace MyAPKapp.VistaUIFramework {
-    [ToolboxBitmap(typeof(System.Windows.Forms.Button))]
-    public class Button : System.Windows.Forms.Button {
+    [ToolboxBitmap(typeof(System.Windows.Forms.CheckBox))]
+    public class CheckBox : System.Windows.Forms.CheckBox {
 
         private Icon _Icon;
         private Image _Image;
         private bool _Shield;
 
-        public Button() : base() {
+        public CheckBox() : base() {
             base.FlatStyle = FlatStyle.System;
         }
 
@@ -33,7 +33,7 @@ namespace MyAPKapp.VistaUIFramework {
         /// Set the button's icon, the default icon size is defined by Windows API
         /// </summary>
         [Category("Appearance")]
-        [DefaultValue((Icon) null)]
+        [DefaultValue((Icon)null)]
         [Description("Set the button's icon, the default icon size is defined by Windows API")]
         public Icon Icon {
             get {
@@ -56,7 +56,7 @@ namespace MyAPKapp.VistaUIFramework {
         }
 
         [Browsable(true)]
-        [DefaultValue((Image) null)]
+        [DefaultValue((Image)null)]
         [EditorBrowsable(EditorBrowsableState.Always)]
         public new Image Image {
             get {

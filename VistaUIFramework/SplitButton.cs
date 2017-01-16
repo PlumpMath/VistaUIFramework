@@ -45,7 +45,7 @@ namespace MyAPKapp.VistaUIFramework {
                     if (m.HWnd==Handle && m.WParam.ToInt32()==1) {
                         SplitClickEventArgs e = new SplitClickEventArgs(Menu);
                         SplitClick(this, e);
-                        if (!e.Cancel) {
+                        if (!e.Cancel && Menu != null) {
                             Menu.Show(this, new Point(0, Height));
                         }
                     }
