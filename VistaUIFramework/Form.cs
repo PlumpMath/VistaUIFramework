@@ -1,5 +1,6 @@
 ﻿using System;
 using System.ComponentModel;
+using System.Drawing;
 using System.Windows.Forms;
 
 namespace MyAPKapp.VistaUIFramework {
@@ -7,6 +8,7 @@ namespace MyAPKapp.VistaUIFramework {
         private bool _CloseBox = true;
         private bool _Aero;
         private Padding _AeroMargin;
+        private NativeMethods.MARGINS margins;
 
         public Form() : base() {}
 
@@ -57,13 +59,28 @@ namespace MyAPKapp.VistaUIFramework {
 
         protected override void OnLoad(EventArgs e) {
             base.OnLoad(e);
-            if (Aero && NativeMethods.DwmIsCompositionEnabled() && !DesignMode) {
-                NativeMethods.MARGINS margins = new NativeMethods.MARGINS();
+            if (Aero && NativeMethods.DwmIsCompositionEnabled()) {
+                margins = new NativeMethods.MARGINS();
                 margins.topHeight = _AeroMargin.Top;
                 margins.bottomHeight = _AeroMargin.Bottom;
                 margins.leftWidth = _AeroMargin.Left;
                 margins.rightWidth = _AeroMargin.Right;
                 NativeMethods.DwmExtendFrameIntoClientArea(Handle, ref margins);
+            }
+        }
+
+        protected override void OnPaintBackground(PaintEventArgs e) {
+            base.OnPaint(e);
+            if (NativeMethods.DwmIsCompositionEnabled()) {
+                e.Graphics.Clear(Color.Black);
+                Rectangle clientArea = new Rectangle(
+                        margins.leftWidth,
+                        margins.topHeight,
+                        this.ClientRectangle.Width - margins.leftWidth - margins.rightWidth,
+                        this.ClientRectangle.Height - margins.topHeight - margins.bottomHeight
+                    );
+                Brush b = new SolidBrush(this.BackColor);
+                e.Graphics.FillRectangle(b, clientArea);
             }
         }
 
