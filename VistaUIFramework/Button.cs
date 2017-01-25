@@ -78,6 +78,12 @@ namespace MyAPKapp.VistaUIFramework {
             }
         }
 
+        /// <summary>
+        /// Set the button's shield to tell user action requires administrator privileges
+        /// </summary>
+        [Category("Appearance")]
+        [DefaultValue(false)]
+        [Description("Set the button's shield to tell user action requires administrator privileges")]
         public bool Shield {
             get {
                 return _Shield;

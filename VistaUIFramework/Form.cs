@@ -71,7 +71,7 @@ namespace MyAPKapp.VistaUIFramework {
 
         protected override void OnPaintBackground(PaintEventArgs e) {
             base.OnPaint(e);
-            if (NativeMethods.DwmIsCompositionEnabled()) {
+            if (NativeMethods.DwmIsCompositionEnabled() && Aero) {
                 e.Graphics.Clear(Color.Black);
                 Rectangle clientArea = new Rectangle(
                         margins.leftWidth,
