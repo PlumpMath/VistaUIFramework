@@ -73,12 +73,14 @@
     </Compile>
     <Compile Include="SplitClickEventArgs.cs" />
     <Compile Include="SplitClickEventHandler.cs" />
+    <Compile Include="Taskbar\TaskbarHelper.cs" />
     <Compile Include="TextBox.cs">
       <SubType>Component</SubType>
     </Compile>
     <Compile Include="TreeView.cs">
       <SubType>Component</SubType>
     </Compile>
+    <Compile Include="UnsupportedWindowsException.cs" />
   </ItemGroup>
   <Import Project="$(MSBuildToolsPath)\Microsoft.CSharp.targets" />
   <!-- To modify your build process, add your task inside one of the targets below and uncomment it. 

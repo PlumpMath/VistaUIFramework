@@ -63,6 +63,8 @@ namespace MyAPKapp.VistaUIFramework {
                 return _Image;
             }
             set {
+                SetShield(false);
+                _Shield = false;
                 _Image = value;
                 if (_Icon != null) {
                     _Icon = null;
@@ -70,8 +72,6 @@ namespace MyAPKapp.VistaUIFramework {
                 }
                 if (value != null) {
                     SetImage(_Image);
-                    _Shield = false;
-                    SetShield(false);
                 } else {
                     RemoveImage();
                 }

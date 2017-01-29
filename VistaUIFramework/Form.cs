@@ -57,6 +57,17 @@ namespace MyAPKapp.VistaUIFramework {
             }
         }
 
+        protected override CreateParams CreateParams {
+            get {
+                if (!CloseBox) {
+                    CreateParams cp = base.CreateParams;
+                    cp.ClassStyle |= NativeMethods.CS_NOCLOSE;
+                    return cp;
+                }
+                return base.CreateParams;
+            }
+        }
+
         protected override void OnLoad(EventArgs e) {
             base.OnLoad(e);
             if (Aero && NativeMethods.DwmIsCompositionEnabled()) {
@@ -70,17 +81,21 @@ namespace MyAPKapp.VistaUIFramework {
         }
 
         protected override void OnPaintBackground(PaintEventArgs e) {
-            base.OnPaint(e);
-            if (NativeMethods.DwmIsCompositionEnabled() && Aero) {
-                e.Graphics.Clear(Color.Black);
-                Rectangle clientArea = new Rectangle(
-                        margins.leftWidth,
-                        margins.topHeight,
-                        this.ClientRectangle.Width - margins.leftWidth - margins.rightWidth,
-                        this.ClientRectangle.Height - margins.topHeight - margins.bottomHeight
-                    );
-                Brush b = new SolidBrush(this.BackColor);
-                e.Graphics.FillRectangle(b, clientArea);
+            if (Aero) {
+                base.OnPaint(e);
+                if (NativeMethods.DwmIsCompositionEnabled()) {
+                    e.Graphics.Clear(Color.Black);
+                    Rectangle clientArea = new Rectangle(
+                            margins.leftWidth,
+                            margins.topHeight,
+                            this.ClientRectangle.Width - margins.leftWidth - margins.rightWidth,
+                            this.ClientRectangle.Height - margins.topHeight - margins.bottomHeight
+                        );
+                    Brush b = new SolidBrush(this.BackColor);
+                    e.Graphics.FillRectangle(b, clientArea);
+                }
+            } else {
+                base.OnPaintBackground(e);
             }
         }
 
