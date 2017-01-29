@@ -9,3 +9,6 @@ The source code is often under development and can be buggy. We recommend to che
 Stable releases are available on .DLL files.
 
 [Click here to download the latest stable version](https://github.com/myapkapp/VistaUIFramework/releases)
+
+#Where's the documentation?
+The properties has documentation. And also you can check out our [official documentation](https://github.com/myapkapp/VistaUIFramework/wiki).
