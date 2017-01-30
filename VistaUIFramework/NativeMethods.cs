@@ -47,6 +47,7 @@ namespace MyAPKapp.VistaUIFramework {
         public const int BS_DEFPUSHBUTTON = 0x0001;
         public const int BS_SPLITBUTTON = 0x000C;
         public const int BS_DEFSPLITBUTTON = 0x000D;
+        public const int BS_ICON = 0x00000040;
         public const int BM_SETIMAGE = 0x00F7;
 
         /* PROGRESS BAR VARIABLES */
@@ -91,14 +92,6 @@ namespace MyAPKapp.VistaUIFramework {
             THB_ICON = 0x2,
             THB_TOOLTIP = 0x4,
             THB_FLAGS = 0x8
-        }
-
-        public enum TBPFLAG {
-            TBPF_NOPROGRESS = 0,
-            TBPF_INDETERMINATE = 0x1,
-            TBPF_NORMAL = 0x2,
-            TBPF_ERROR = 0x4,
-            TBPF_PAUSED = 0x8
         }
 
         [StructLayout(LayoutKind.Sequential, Pack = 8, CharSet = CharSet.Unicode)]

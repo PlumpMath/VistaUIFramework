@@ -40,6 +40,8 @@ namespace MyAPKapp.VistaUIFramework {
                 return _Icon;
             }
             set {
+                SetShield(false);
+                _Shield = false;
                 _Icon = value;
                 if (_Image != null) {
                     _Image = null;
@@ -47,8 +49,6 @@ namespace MyAPKapp.VistaUIFramework {
                 }
                 if (value != null) {
                     SetIcon(_Icon);
-                    _Shield = false;
-                    SetShield(false);
                 } else {
                     RemoveIcon();
                 }
@@ -102,6 +102,17 @@ namespace MyAPKapp.VistaUIFramework {
 
                 }
                 SetShield(value);
+            }
+        }
+
+        protected override CreateParams CreateParams {
+            get {
+                if (string.IsNullOrEmpty(Text)) {
+                    CreateParams cp = base.CreateParams;
+                    cp.Style |= NativeMethods.BS_ICON;
+                    return cp;
+                }
+                return base.CreateParams;
             }
         }
 

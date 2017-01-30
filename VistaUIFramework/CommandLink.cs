@@ -50,5 +50,10 @@ namespace MyAPKapp.VistaUIFramework {
             }
         }
 
+        protected override void OnHandleCreated(EventArgs e) {
+            base.OnHandleCreated(e);
+            if (_Note != null) Note = _Note;
+        }
+
     }
 }

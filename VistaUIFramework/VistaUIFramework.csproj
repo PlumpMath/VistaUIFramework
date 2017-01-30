@@ -74,6 +74,7 @@
     <Compile Include="SplitClickEventArgs.cs" />
     <Compile Include="SplitClickEventHandler.cs" />
     <Compile Include="Taskbar\TaskbarHelper.cs" />
+    <Compile Include="TBPFLAG.cs" />
     <Compile Include="TextBox.cs">
       <SubType>Component</SubType>
     </Compile>
