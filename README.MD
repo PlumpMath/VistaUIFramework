@@ -28,4 +28,4 @@ The only minimum requirement: .NET Framework 2.0 or later.
 [Click here to download the latest stable version](https://github.com/myapkapp/VistaUIFramework/releases)
 
 # Where's the documentation?
-The properties has documentation. And also you can check out our [official documentation](https://github.com/myapkapp/VistaUIFramework/wiki).
+The frameworks has its documentation. And you can also check out our [official documentation](https://github.com/myapkapp/VistaUIFramework/wiki).
