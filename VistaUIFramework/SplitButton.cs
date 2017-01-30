@@ -43,9 +43,13 @@ namespace MyAPKapp.VistaUIFramework {
             switch (m.Msg) {
                 case (NativeMethods.BCM_SETDROPDOWNSTATE):
                     if (m.HWnd==Handle && m.WParam.ToInt32()==1) {
-                        SplitClickEventArgs e = new SplitClickEventArgs(Menu);
-                        SplitClick(this, e);
-                        if (!e.Cancel && Menu != null) {
+                        if (SplitClick != null) {
+                            SplitClickEventArgs e = new SplitClickEventArgs(Menu);
+                            SplitClick(this, e);
+                            if (!e.Cancel && Menu != null) {
+                                Menu.Show(this, new Point(0, Height));
+                            }
+                        } else {
                             Menu.Show(this, new Point(0, Height));
                         }
                     }
@@ -59,6 +63,8 @@ namespace MyAPKapp.VistaUIFramework {
                 return new Size(108, base.DefaultSize.Height);
             }
         }
+
+
 
     }
 }
