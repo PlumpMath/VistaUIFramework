@@ -1,5 +1,7 @@
 ﻿using System;
+using System.ComponentModel;
 using System.Drawing;
+using System.Windows.Forms;
 
 namespace MyAPKapp.VistaUIFramework {
     [ToolboxBitmap(typeof(System.Windows.Forms.ListView))]
@@ -13,6 +15,16 @@ namespace MyAPKapp.VistaUIFramework {
             int extended = NativeMethods.SendMessage(base.Handle, NativeMethods.TVM_GETEXTENDEDSTYLE, 0, 0).ToInt32();
             extended |= (NativeMethods.TVS_EX_AUTOHSCROLL | NativeMethods.TVS_EX_FADEINOUTEXPANDOS | NativeMethods.TVS_EX_DOUBLEBUFFER);
             NativeMethods.SendMessage(base.Handle, NativeMethods.TVM_SETEXTENDEDSTYLE, 0, extended);
+        }
+
+        [Browsable(true)]
+        public new virtual ContextMenu ContextMenu {
+            get {
+                return base.ContextMenu;
+            }
+            set {
+                base.ContextMenu = value;
+            }
         }
 
     }

@@ -12,6 +12,10 @@ namespace MyAPKapp.VistaUIFramework {
         private Image _Image;
         private bool _Shield;
 
+        /// <summary>
+        /// The native button inherited from WinForms button<br />
+        /// Use ContextMenu instead of ContextMenuStrip
+        /// </summary>
         public Button() : base() {
             base.FlatStyle = FlatStyle.System;
         }
@@ -136,6 +140,16 @@ namespace MyAPKapp.VistaUIFramework {
         private void SetShield(bool shield) {
             int bin = shield ? 1 : 0;
             NativeMethods.SendMessage(Handle, NativeMethods.BCM_SETSHIELD, 0, bin);
+        }
+
+        [Browsable(true)]
+        public new virtual ContextMenu ContextMenu {
+            get {
+                return base.ContextMenu;
+            }
+            set {
+                base.ContextMenu = value;
+            }
         }
 
     }

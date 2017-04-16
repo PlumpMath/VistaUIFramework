@@ -121,5 +121,15 @@ namespace MyAPKapp.VistaUIFramework {
             NativeMethods.SendMessage(Handle, NativeMethods.BCM_SETSHIELD, 0, bin);
         }
 
+        [Browsable(true)]
+        public new virtual ContextMenu ContextMenu {
+            get {
+                return base.ContextMenu;
+            }
+            set {
+                base.ContextMenu = value;
+            }
+        }
+
     }
 }

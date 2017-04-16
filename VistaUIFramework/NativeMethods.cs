@@ -70,6 +70,12 @@ namespace MyAPKapp.VistaUIFramework {
         public const int TVS_EX_FADEINOUTEXPANDOS = 0x0040;
         public const int TVS_EX_DOUBLEBUFFER = 0x0004;
 
+        /* MENU VARIABLES */
+        public const int MIM_STYLE = 0x00000010;
+        public const int MNS_CHECKORBMP = 0x04000000;
+        public const int MIIM_BITMAP = 0x00000080;
+
+
         [StructLayout(LayoutKind.Sequential)]
         public struct MARGINS {
             public int leftWidth;
@@ -97,8 +103,8 @@ namespace MyAPKapp.VistaUIFramework {
         [StructLayout(LayoutKind.Sequential, Pack = 8, CharSet = CharSet.Unicode)]
         public struct THUMBBUTTON {
             public THUMBBUTTONMASK dwMask;
-            public uint iId;
-            public uint iBitmap;
+            public int iId;
+            public int iBitmap;
             public IntPtr hIcon;
 
             [MarshalAs(UnmanagedType.ByValTStr, SizeConst = 259)]
@@ -106,7 +112,6 @@ namespace MyAPKapp.VistaUIFramework {
 
             public THUMBBUTTONFLAGS dwFlags;
         }
-
 
         /// <summary>
         /// Extends ITaskbarList2 by exposing methods that support the unified launching and switching taskbar button
@@ -219,7 +224,7 @@ namespace MyAPKapp.VistaUIFramework {
             /// which group the thumbnail is a member of. This value is required and cannot be NULL.</param>
             /// <param name="tbatFlags">None, one, or both of the following values that specify a thumbnail
             /// and peek view to use in place of a representation of the specific tab or document.</param>
-            void SetTabActive(IntPtr hWndTab, IntPtr hWndMDI, UInt32 tbatFlags);
+            void SetTabActive(IntPtr hWndTab, IntPtr hWndMDI, int tbatFlags);
 
             /// <summary>
             /// Adds a thumbnail toolbar with a specified set of buttons to the thumbnail image of a window in a
@@ -235,12 +240,12 @@ namespace MyAPKapp.VistaUIFramework {
             /// order in which they are displayed left to right, will be their permanent order.</param>
             void ThumbBarAddButtons(
             IntPtr hWnd,
-            uint cButtons,
+            int cButtons,
             [MarshalAs(UnmanagedType.LPArray)] THUMBBUTTON[] pButton);
 
             void ThumbBarUpdateButtons(
             IntPtr hWnd,
-            uint cButtons,
+            int cButtons,
             [MarshalAs(UnmanagedType.LPArray)] THUMBBUTTON[] pButton);
 
             /// <summary>

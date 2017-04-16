@@ -63,5 +63,15 @@ namespace MyAPKapp.VistaUIFramework {
             base.WndProc(ref m);
         }
 
+        [Browsable(true)]
+        public new virtual ContextMenu ContextMenu {
+            get {
+                return base.ContextMenu;
+            }
+            set {
+                base.ContextMenu = value;
+            }
+        }
+
     }
 }

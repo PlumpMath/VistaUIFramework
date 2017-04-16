@@ -5,7 +5,7 @@ using System.Drawing;
 using System.Windows.Forms;
 
 namespace MyAPKapp.VistaUIFramework {
-    [ToolboxBitmap(typeof(System.Windows.Forms.CheckBox))]
+    [ToolboxBitmap(typeof(System.Windows.Forms.TextBox))]
     public class IPv4Box : System.Windows.Forms.TextBox {
 
         public IPv4Box() : base() {}
@@ -22,6 +22,16 @@ namespace MyAPKapp.VistaUIFramework {
                     cp.ExStyle &= ~(NativeMethods.WS_EX_RIGHT | NativeMethods.WS_EX_RTLREADING | NativeMethods.WS_EX_LEFTSCROLLBAR);
                 }
                 return cp;
+            }
+        }
+
+        [Browsable(true)]
+        public new virtual ContextMenu ContextMenu {
+            get {
+                return base.ContextMenu;
+            }
+            set {
+                base.ContextMenu = value;
             }
         }
 

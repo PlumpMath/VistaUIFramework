@@ -59,7 +59,11 @@
     <Compile Include="ListView.cs">
       <SubType>Component</SubType>
     </Compile>
+    <Compile Include="MenuProvider.cs" />
     <Compile Include="NativeMethods.cs" />
+    <Compile Include="OwnerDrawnMenu.cs">
+      <SubType>Component</SubType>
+    </Compile>
     <Compile Include="ProgressBar.cs">
       <SubType>Component</SubType>
     </Compile>
